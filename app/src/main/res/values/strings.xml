@@ -1,14 +1,6 @@
 <resources>
     <string name="app_name">MiPush Enhance</string>
-    <string name="title_activity_main">MainActivity</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
-
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="title_activity_main1">MainActivity</string>
-    <string name="title_activity_main2">MainActivity</string>
+    <string name="xposed_desc">(冰箱等)停用app后,依旧可以收到Mipush消息,目前版本需要手动打开app再点击通知栏进入详情...</string>
+    <string name="about_module">This module is made by YukiHookAPI. \nLearn more https://github.com/HighCapable/YuKiHookAPI</string>
+    <string name="about_module_extension">This Xposed Module is powered by KavaRef.\nLearn more https://github.com/HighCapable/KavaRef</string>
 </resources>
