@@ -1,5 +1,6 @@
 package cn.wankkoree.xp.mipushenhance.hook
 
+import android.app.AndroidAppHelper
 import android.content.Intent
 import android.content.pm.ResolveInfo
 import com.highcapable.kavaref.KavaRef.Companion.resolve
@@ -33,6 +34,30 @@ class HookEntry : IYukiHookXposedInit {
                         list.add(r)
                     }
                     result = list
+                }
+            }
+        }
+
+        loadApp("com.xiaomi.xmsf") {
+            "com.xiaomi.xmsf.push.service.MiuiPushActivateService".toClass().resolve().optional(true).method {
+                name = "a"
+            }.hookAll {
+                after {
+                    val original = result<MutableList<String>>()
+
+                    val extand = mutableListOf<String>()
+                    for (r in AndroidAppHelper.currentApplication().applicationContext.packageManager.queryBroadcastReceivers(Intent("android.intent.action.BOOT_COMPLETED"), 512)) {
+                        if (r.activityInfo.packageName != null) {
+                            extand.add(r.activityInfo.packageName)
+                        }
+                    }
+
+                    val all = mutableListOf<String>()
+                    if (!original.isNullOrEmpty())
+                        all.addAll(original)
+                    all.removeAll(extand)
+                    all.addAll(extand)
+                    result = all
                 }
             }
         }
